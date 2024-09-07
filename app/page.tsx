@@ -12,18 +12,18 @@ export default function Component() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
+  
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-
+  
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-
+  
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-
+  
     const drawHexagon = (x: number, y: number, size: number) => {
       ctx.beginPath();
       for (let i = 0; i < 6; i++) {
@@ -35,57 +35,69 @@ export default function Component() {
       }
       ctx.closePath();
     };
-
+  
     const animate = (time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Create vibrant chameleon-like gradient background
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient.addColorStop(0, 'rgba(255, 0, 128, 1)');  // Vibrant pink
-      gradient.addColorStop(0.25, 'rgba(255, 191, 0, 1)');  // Vibrant yellow
-      gradient.addColorStop(0.5, 'rgba(0, 255, 255, 1)');  // Vibrant cyan
-      gradient.addColorStop(0.75, 'rgba(128, 0, 255, 1)');  // Vibrant purple
-      gradient.addColorStop(1, 'rgba(255, 0, 128, 1)');  // Back to vibrant pink
-
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const hexSize = 25;  // Slightly smaller hexagons
+    
+      const gradient1 = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient1.addColorStop(0, 'rgba(255, 0, 128, 0.7)');
+      gradient1.addColorStop(0.25, 'rgba(255, 191, 0, 0.7)');
+      gradient1.addColorStop(0.5, 'rgba(0, 255, 255, 0.7)');
+      gradient1.addColorStop(0.75, 'rgba(128, 0, 255, 0.7)');
+      gradient1.addColorStop(1, 'rgba(255, 0, 128, 0.7)');
+    
+      ctx.fillStyle = gradient1;
+      ctx.fillRect(-10 + Math.sin(time / 3000) * 20, -10 + Math.cos(time / 3000) * 20, canvas.width + 20, canvas.height + 20);
+    
+      const gradient2 = ctx.createLinearGradient(canvas.width, canvas.height, 0, 0);
+      gradient2.addColorStop(0, 'rgba(255, 128, 0, 0.5)');
+      gradient2.addColorStop(0.25, 'rgba(0, 128, 255, 0.5)');
+      gradient2.addColorStop(0.5, 'rgba(0, 255, 128, 0.5)');
+      gradient2.addColorStop(0.75, 'rgba(128, 255, 0, 0.5)');
+      gradient2.addColorStop(1, 'rgba(255, 128, 0, 0.5)');
+    
+      ctx.fillStyle = gradient2;
+      ctx.fillRect(-10 + Math.cos(time / 5000) * 40, -10 + Math.sin(time / 5000) * 40, canvas.width + 20, canvas.height + 20);
+    
+      const hexSize = 25;
       const hexHeight = hexSize * Math.sqrt(3);
       const hexWidth = hexSize * 2;
       const columns = Math.ceil(canvas.width / (hexWidth * 0.75)) + 1;
       const rows = Math.ceil(canvas.height / hexHeight) + 1;
-
+    
       for (let i = 0; i < columns; i++) {
         for (let j = 0; j < rows; j++) {
           const x = i * hexWidth * 0.75;
           const y = j * hexHeight + (i % 2 === 0 ? 0 : hexHeight / 2);
           
-          const waveX = Math.sin(time / 2000 + i * 0.2 + j * 0.3) * 5;
-          const waveY = Math.cos(time / 2000 + i * 0.3 + j * 0.2) * 5;
-
+          // Smaller amplitude but higher frequency for more pronounced waves without separation
+          const waveX = Math.sin(time / 1000 + i * 0.5 + j * 0.5) * 8; // Smaller amplitude
+          const waveY = Math.cos(time / 1000 + i * 0.5 + j * 0.5) * 8; // Smaller amplitude
+    
           drawHexagon(x + waveX, y + waveY, hexSize);
-
-          // Dark hexagons with slight transparency
+    
           ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
           ctx.fill();
-
-          // Subtle outline for definition
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    
+          ctx.strokeStyle = 'rgba(0, 0, 0, 1)'; // Fully opaque black for borders
           ctx.lineWidth = 1;
           ctx.stroke();
         }
       }
-
+    
       requestAnimationFrame(animate);
     };
-
+    
+    
+    
+  
     animate(0);
-
+  
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
   }, []);
+  
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
