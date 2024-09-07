@@ -95,7 +95,7 @@ export default function Component() {
           <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-cyan-400">Team Ingenuity</h1>
           <div className="flex space-x-6">
             {['Home', 'About', 'Projects', 'Contact'].map((item) => (
-              <Button key={item} variant="ghost" className="text-gray-300 hover:text-white text-sm">
+              <Button key={item} variant="ghost" className="text-gray-300 hover:bg-gray-700 hover:text-white text-sm">
                 {item}
               </Button>
             ))}
