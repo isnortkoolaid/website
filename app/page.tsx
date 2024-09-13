@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from 'lucide-react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Component() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
