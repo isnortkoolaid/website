@@ -8,6 +8,7 @@ import { ChevronRight } from 'lucide-react';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Component() {
+  <SpeedInsights />
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
