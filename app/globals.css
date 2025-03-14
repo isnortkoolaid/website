@@ -26,6 +26,10 @@ body {
   font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
 }
 
+html, body, p, span, div, li, a, * {
+  font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
