@@ -36,6 +36,25 @@ html, body, p, span, div, li, a, * {
   }
 }
 
+
+@keyframes text-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+
+.blinking-cursor {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+    animation: text-blink 1s step-start infinite;
+}
+/* .imagerotate {
+  border: red;
+  border-radius: 15
+} */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
