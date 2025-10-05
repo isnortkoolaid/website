@@ -10,99 +10,6 @@ import TextRotation from '../components/ui/textroate';
 import ImageRotation from '../components/ui/ImageRotation'
 
 export default function Component() {
-  // <SpeedInsights />
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const words = ["Ingenuity", "leaders", "builders", "innovators", "designers", "coders"]
-  let currentIndex = 0
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-  
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-  
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-  
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-  
-    const drawHexagon = (x: number, y: number, size: number) => {
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i;
-        const hx = x + size * Math.cos(angle);
-        const hy = y + size * Math.sin(angle);
-        if (i === 0) ctx.moveTo(hx, hy);
-        else ctx.lineTo(hx, hy);
-      }
-      ctx.closePath();
-    };
-  
-    const animate = (time: number) => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-      const gradient1 = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      gradient1.addColorStop(0, 'rgba(255, 0, 128, 0.7)');
-      gradient1.addColorStop(0.25, 'rgba(255, 191, 0, 0.7)');
-      gradient1.addColorStop(0.5, 'rgba(0, 255, 255, 0.7)');
-      gradient1.addColorStop(0.75, 'rgba(128, 0, 255, 0.7)');
-      gradient1.addColorStop(1, 'rgba(255, 0, 128, 0.7)');
-    
-      ctx.fillStyle = gradient1;
-      ctx.fillRect(-10 + Math.sin(time / 3000) * 20, -10 + Math.cos(time / 3000) * 20, canvas.width + 20, canvas.height + 20);
-    
-      const gradient2 = ctx.createLinearGradient(canvas.width, canvas.height, 0, 0);
-      gradient2.addColorStop(0, 'rgba(255, 128, 0, 0.5)');
-      gradient2.addColorStop(0.25, 'rgba(0, 128, 255, 0.5)');
-      gradient2.addColorStop(0.5, 'rgba(0, 255, 128, 0.5)');
-      gradient2.addColorStop(0.75, 'rgba(128, 255, 0, 0.5)');
-      gradient2.addColorStop(1, 'rgba(255, 128, 0, 0.5)');
-    
-      ctx.fillStyle = gradient2;
-      ctx.fillRect(-10 + Math.cos(time / 5000) * 40, -10 + Math.sin(time / 5000) * 40, canvas.width + 20, canvas.height + 20);
-    
-      const hexSize = 25;
-      const hexHeight = hexSize * Math.sqrt(3);
-      const hexWidth = hexSize * 2;
-      const columns = Math.ceil(canvas.width / (hexWidth * 0.75)) + 1;
-      const rows = Math.ceil(canvas.height / hexHeight) + 1;
-    
-      for (let i = 0; i < columns; i++) {
-        for (let j = 0; j < rows; j++) {
-          const x = i * hexWidth * 0.75;
-          const y = j * hexHeight + (i % 2 === 0 ? 0 : hexHeight / 2);
-          
-          // Smaller amplitude but higher frequency for more pronounced waves without separation
-          const waveX = Math.sin(time / 1000 + i * 0.5 + j * 0.5) * 8; // Smaller amplitude
-          const waveY = Math.cos(time / 1000 + i * 0.5 + j * 0.5) * 8; // Smaller amplitude
-    
-          drawHexagon(x + waveX, y + waveY, hexSize);
-    
-          ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-          ctx.fill();
-    
-          ctx.strokeStyle = 'rgba(0, 0, 0, 1)'; // Fully opaque black for borders
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      }
-    
-      requestAnimationFrame(animate);
-    };
-    
-    
-    
-  
-    animate(0);
-  
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, []);
-  
 
   return (
     <>
@@ -129,7 +36,6 @@ export default function Component() {
       </nav>
 
     <header className="relative justify-between flex items-center py-32 text-left px-4 min-h-screen overflow-hidden pl-16 pr-16">
-      {/* <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" /> */}
       <div className="flex-1 relative z-10">
         <h1 className="will-change-contents text-6xl font-bold mb-6 leading-tight bg-clip-text align-text-bottom">
           We are <TextRotation /><span className="will-change-opacity blinking-cursor text-center select-none pointer-events-none" aria-hidden>|</span>
@@ -142,7 +48,7 @@ export default function Component() {
           <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>
-      <div className="flex-1 items-right text-right">
+      <div className="flex-1 items-center">
         <ImageRotation />
       </div>
     </header>
