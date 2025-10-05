@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import Image from 'next/image'
 
 // function CreateImage(image: string, image_alt: string, is_fade: boolean = false, is_last: boolean = false) : JSX.Element {
 //     if (is_fade) {
@@ -24,8 +25,8 @@ import { useEffect, useState } from "react"
 //     }
 // }
 export default function TextRotation() {
-    const imageList = ["https://s6.imgcdn.dev/YkoqRy.jpg", "https://s6.imgcdn.dev/YkoXn2.jpg"]
-    const altList = ["Image of Team Ingenuity as of 2025", "Image of robot build in progress"]
+    const imageList = ["https://s6.imgcdn.dev/YkoqRy.jpg", "https://s6.imgcdn.dev/YkoXn2.jpg", "https://s6.imgcdn.dev/YkpYw0.jpg", "https://s6.imgcdn.dev/YkphUM.jpg"]
+    const altList = ["Image of Team Ingenuity as of 2025", "Image of robot build in progress", "Image of Team Ingenuity fundraising by selling food during the 2025 China Day", "Image of Team Ingenuity during the 2025 China Day" ]
     // const [nextImage, setNextImage] = useState(1)
     const [currentImage, setCurrentImage] = useState(0) //this is the index
     const [lastImage, setLastImage] = useState(0)
@@ -62,23 +63,22 @@ export default function TextRotation() {
                 //     setCurrentImage(currentImage+1)
                     
                 // }
-            }, 4000
+            }, 6000
         );
         return () => clearInterval(interval);
     }, [currentImage])
     return <>
-        <div className="relative flex justify-center items-center overflow-hidden w-full h-full">            
-            {/* {CreateImage(imageList[lastImage], altList[lastImage], false, true)} */}
-            <img
+    <div className="logo-gradient relative w-full max-w-[1000px] min-h-[600px] flex justify-center items-center overflow-hidden">            {/* {CreateImage(imageList[lastImage], altList[lastImage], false, true)} */}
+            <Image
                 src={imageList[currentImage]}
-                aria-label={altList[currentImage]}
+                alt={altList[currentImage]}
                 className={`rounded-lg ${
                     isFadingOut ? "animate-fade-out" :
                     isFadingIn ? "animate-fade-in" :
                     ""
                 }`}
-
                 key={currentImage}
+                fill
             />
             {/* {CreateImage(imageList[lastImage], altList[lastImage], isFading, true)} */}
             {/* {CreateImage(imageList[currentImage], altList[currentImage], isFading, false)} */}

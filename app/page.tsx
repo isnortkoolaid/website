@@ -17,6 +17,10 @@ export default function Component() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+      <link rel="preload" href="https://s6.imgcdn.dev/YkoXn2.jpg" as="image"/>
+      <link rel="preload" href="https://s6.imgcdn.dev/YkoqRy.jpg" as="image"/>
+      <link rel="preload" href="https://s6.imgcdn.dev/YkpYw0.jpg" as="image"/>
+      <link rel="preload" href="https://s6.imgcdn.dev/YkphUM.jpg" as="image"/>
     </Head>
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
       {/* Navigation */}
@@ -41,7 +45,7 @@ export default function Component() {
           We are <TextRotation /><span className="will-change-opacity blinking-cursor text-center select-none pointer-events-none" aria-hidden>|</span>
         </h1>
         <p className="text-xl mb-8 leading-relaxed text-gray-300 max-w-2xl">
-          Building the Future of Robotics
+          Building the Future of STEM in Howard County
         </p>
         <Button size="lg" className="bg-gradient-to-r from-red-500 to-yellow-500 text-white hover:from-pink-600 hover:to-cyan-600 rounded-full px-8 py-3 font-medium group">
           Learn More

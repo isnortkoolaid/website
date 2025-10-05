@@ -38,6 +38,22 @@ h1, h2, h3, h4, h5, h6 {
   animation: fade-out 1s ease-in-out
 }
 
+.logo-gradient {
+  filter: drop-shadow(0 0 2em orange);
+}
+
+@media (min-width: 768px) { /* so we don't try to apply a drop shadow to mobile devices */
+  .logo-gradient {
+    filter: none;
+    transition: transform .7s ease, filter .7s ease-in-out;
+  }
+  .logo-gradient:hover {
+    filter: drop-shadow(0 0 2em orange);
+    transform: scale(1.05)
+
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
