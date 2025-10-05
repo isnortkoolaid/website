@@ -48,7 +48,7 @@ export default function Component() {
           <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>
-      <div className="flex-1 items-center">
+      <div className="flex-1 items-center ">
         <ImageRotation />
       </div>
     </header>
