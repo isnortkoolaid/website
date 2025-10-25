@@ -29,7 +29,7 @@ export default function TextRotation() {
     const altList = ["Image of Team Ingenuity as of 2025", "Image of robot build in progress", "Image of Team Ingenuity fundraising by selling food during the 2025 China Day", "Image of Team Ingenuity during the 2025 China Day" ]
     // const [nextImage, setNextImage] = useState(1)
     const [currentImage, setCurrentImage] = useState(0) //this is the index
-    const [lastImage, setLastImage] = useState(0)
+    // const [lastImage, setLastImage] = useState(0)
     const [isFadingIn, setFadingIn] = useState(false)
     const [isFadingOut, setFadingOut] = useState(false)
     // const [intializedBefore, setInitialized] = useState(false)
