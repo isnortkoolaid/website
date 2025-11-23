@@ -25,8 +25,8 @@ import Image from 'next/image'
 //     }
 // }
 export default function TextRotation() {
-    const imageList = ["https://s6.imgcdn.dev/YkoqRy.jpg", "https://s6.imgcdn.dev/YkoXn2.jpg", "https://s6.imgcdn.dev/YkpYw0.jpg", "https://s6.imgcdn.dev/YkphUM.jpg"]
-    const altList = ["Image of Team Ingenuity as of 2025", "Image of robot build in progress", "Image of Team Ingenuity fundraising by selling food during the 2025 China Day", "Image of Team Ingenuity during the 2025 China Day" ]
+    const imageList = ["/images/compressed-untitled4.jpg", "/images/compressed-untitled2.jpg", "/images/compressed-Image_20251004_202757_942.jpg"]
+    const altList = ["Image of Team Ingenuity as of 2025", "Image of robot build in progress", "Image of Team Ingenuity fundraising by selling food during the 2025 China Day"]
     // const [nextImage, setNextImage] = useState(1)
     const [currentImage, setCurrentImage] = useState(0) //this is the index
     // const [lastImage, setLastImage] = useState(0)
@@ -78,6 +78,7 @@ export default function TextRotation() {
                     ""
                 }`}
                 key={currentImage}
+                quality={90}
                 fill
             />
             {/* {CreateImage(imageList[lastImage], altList[lastImage], isFading, true)} */}

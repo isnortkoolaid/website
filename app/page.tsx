@@ -17,13 +17,11 @@ export default function Component() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-      <link rel="preload" href="https://s6.imgcdn.dev/YkoXn2.jpg" as="image"/>
-      <link rel="preload" href="https://s6.imgcdn.dev/YkoqRy.jpg" as="image"/>
-      <link rel="preload" href="https://s6.imgcdn.dev/YkpYw0.jpg" as="image"/>
-      <link rel="preload" href="https://s6.imgcdn.dev/YkphUM.jpg" as="image"/>
+      <link rel="preload" href="/images/compressed-untitled4.jpg" as="image"/>
+      <link rel="preload" href="/images/compressed-untitled2.jpg" as="image"/>
+      <link rel="preload" href="/images/compressed-Image_20251004_202757_942.jpg" as="image"/>
     </Head>
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
-      {/* Navigation */}
       <nav className="p-4 backdrop-blur-md bg-black/30 fixed w-full z-50">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-400">
@@ -59,25 +57,25 @@ export default function Component() {
 
 
       {/* About Section */}
-      <section className="py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
+      <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-y-0 left-1/2 w-1/2 bg-gradient-to-r from-transparent to-purple-900/30 blur-3xl"></div>
+          <div className="absolute inset-y-0 left-1/2 w-1/2 blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-yellow-400 to-cyan-400">
+          <h2 className="text-4xl font-bold mb-16 text-center bg-clip-text text-transparent">
             About Our Team
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
             <Card className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
-              <CardHeader className="bg-gradient-to-r from-pink-500 to-cyan-500 p-1">
+              <CardHeader className="bg-gradient-to-r from-red-500 to-yellow-500 p-1">
                 <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">Our Mission</CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <p className="text-gray-300">Team Ingenuity is dedicated to fostering innovation, teamwork, and STEM education through competitive robotics.</p>
+                <p className="text-gray-300">We're dedicated to inspiring the next generation of STEM students in Howard County through our participation in Competitive Robotics.</p>
               </CardContent>
             </Card>
             <Card className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
-              <CardHeader className="bg-gradient-to-r from-yellow-500 to-purple-500 p-1">
+              <CardHeader className="bg-gradient-to-r from-yellow-500 to-red-500 p-1">
                 <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">Our Achievements</CardTitle>
               </CardHeader>
               <CardContent className="p-6">

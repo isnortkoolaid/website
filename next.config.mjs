@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 's6.imgcdn.dev',
+        hostname: 'files.catbox.moe',
       },
     ],
   },
