@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -38,26 +38,49 @@ h1, h2, h3, h4, h5, h6 {
   animation: fade-out 1s ease-in-out
 }
 
-.logo-gradient {
+/* .logo-gradient {
   filter: drop-shadow(0 0 2em orange);
-}
+  will-change: filter;
+} */
 
-@media (min-width: 768px) { /* so we don't try to apply a drop shadow to mobile devices */
+@media (min-width: 768px) {
   .logo-gradient {
-    filter: none;
+    filter: drop-shadow(0 0 0em orange);
     transition: transform .7s ease, filter .7s ease-in-out;
+    will-change: transform, filter;
   }
   .logo-gradient:hover {
     filter: drop-shadow(0 0 2em orange);
-    transform: scale(1.05)
-
+    transform: scale(1.05);
+    will-change: transform, filter
   }
 }
+
+/* .button-gradient {
+  filter: drop-shadow(0 0 1em orange);
+  will-change: filter;
+} */
+
+@media (min-width: 768px) {
+  .button-gradient {
+    filter: drop-shadow(0 0 0em orange);
+    transition: transform .7s ease, filter .7s ease-in-out;
+      will-change: transform, filter
+  }
+  .button-gradient:hover {
+    filter: drop-shadow(0 0 1em orange);
+    transform: scale(1.1);
+    will-change: transform, filter
+  }
+}
+
+
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 html, body, p, span, div, li, a, * {
@@ -109,6 +132,7 @@ html, body, p, span, div, li, a, * {
     margin-right: 0;
     animation: text-blink 1s step-start infinite;
 }
+
 /* .imagerotate {
   border: red;
   border-radius: 15
