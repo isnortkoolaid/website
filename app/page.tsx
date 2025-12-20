@@ -250,7 +250,8 @@ export default function Component() {
               width={400}
               height={225}
               className="mx-4 rounded-lg object-cover"
-              priority
+              loading="lazy"
+              quality={75}
             />
             <Image
               src="/images/compressed-untitled2.jpg"
@@ -258,6 +259,8 @@ export default function Component() {
               width={400}
               height={225}
               className="mx-4 rounded-lg object-cover"
+              loading="lazy"
+              quality={75}
             />
             <Image
               src="/images/compressed-Image_20251004_202757_942.jpg"
@@ -265,6 +268,8 @@ export default function Component() {
               width={400}
               height={225}
               className="mx-4 rounded-lg object-cover"
+              loading="lazy"
+              quality={75}
             />
             <Image
               src="/images/image-3.png"
@@ -272,6 +277,8 @@ export default function Component() {
               width={400}
               height={225}
               className="mx-4 rounded-lg object-cover"
+              loading="lazy"
+              quality={75}
             />
 
           </Marquee>
