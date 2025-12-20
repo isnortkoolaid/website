@@ -5,15 +5,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Head from 'next/head';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Italic } from 'lucide-react';
-import { use, useEffect, useState } from "react";
+import { ChevronRight } from 'lucide-react';
+import { useState } from "react";
+import dynamic from 'next/dynamic';
+
+const Modal = dynamic(() => import("@/components/ui/modal"), { ssr: false });
 
 // import { SpeedInsights } from "@vercel/speed-insights/next";
 import TextRotation from '../components/ui/textroate';
 import ImageRotation from '../components/ui/ImageRotation'
 import Header from "@/components/ui/header";
 import Marquee from "react-fast-marquee";
-import Modal from "@/components/ui/modal";
 // import Gallery from "@/components/ui/gallery";
 
 export default function Component() {
@@ -178,9 +180,10 @@ export default function Component() {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-      <link rel="preload" href="/images/compressed-untitled4.jpg" as="image"/>
-      <link rel="preload" href="/images/compressed-untitled2.jpg" as="image"/>
-      <link rel="preload" href="/images/compressed-Image_20251004_202757_942.jpg" as="image"/>
+      <link rel="preload" href="/images/compressed-untitled4.jpg" as="image" type="image/jpeg"/>
+      <link rel="preload" href="/images/compressed-untitled2.jpg" as="image" type="image/jpeg"/>
+      <link rel="preload" href="/images/compressed-Image_20251004_202757_942.jpg" as="image" type="image/jpeg"/>
+      <meta name="preconnect" content="https://fonts.googleapis.com" />
     </Head>
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
       <Header />
@@ -247,6 +250,7 @@ export default function Component() {
               width={400}
               height={225}
               className="mx-4 rounded-lg object-cover"
+              priority
             />
             <Image
               src="/images/compressed-untitled2.jpg"

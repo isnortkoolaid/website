@@ -32,7 +32,7 @@ export default function TextRotation() {
         }, 6000);
         
         return () => clearInterval(interval);
-    }, [imageList.length]) // Changed dependency
+    }, [imageList.length])
     
     return <>
         <div className="logo-gradient relative w-full max-w-[950px] aspect-video flex justify-center items-center overflow-hidden">
@@ -45,8 +45,10 @@ export default function TextRotation() {
                     ""
                 }`}
                 key={currentImage}
-                quality={90}
+                quality={85}
                 fill
+                sizes="(max-width: 950px) 100vw, 950px"
+                priority
             />
         </div>
     </>
