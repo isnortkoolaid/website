@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "24220 Ingenuity FTC",
+  title: "Ingenuity",
   description: "The website of the FTC team 24220 Ingenuity.",
 };
 
