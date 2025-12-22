@@ -195,9 +195,11 @@ export default function Component() {
           <p className="text-lg md:text-xl mb-8 leading-relaxed text-gray-300 max-w-2xl">
             Building the Future of STEM in Howard County
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-red-500 to-yellow-500 text-white rounded-full px-8 py-3 font-medium group button-gradient">
-            Learn More
-            <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <Button size="lg" asChild className="bg-gradient-to-r from-red-500 to-yellow-500 text-white rounded-full px-8 py-3 font-medium group button-gradient">
+            <a href="#about">
+              Learn More
+              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
         </div>
         <div className="flex-1 items-center mt-8 md:mt-0 mx-4 w-full md:w-auto">
@@ -208,7 +210,7 @@ export default function Component() {
 
 
         {/* About Section */}
-        <section className="py-32 relative overflow-hidden">
+        <section id="about" className="py-32 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute inset-y-0 left-1/2 w-1/2 blur-3xl"></div>
           </div>
@@ -231,9 +233,11 @@ export default function Component() {
                 </CardHeader>
                 <CardContent className="p-6">
                   <ul className="list-disc pl-5 text-gray-300">
-                    <li>First Place in Regional Competition 2023</li>
-                    <li>Innovation Award at State Championships 2022</li>
-                    <li>Community Outreach Recognition 2021</li>
+                    <p className="text-bold">2023-2024 Season</p>
+                    <li>Innovation Award - 2nd Place</li>
+                    <li>Served as Team Captain at the Qualifier</li>
+                    <p className="text-bold">2024-2025 Season</p>
+                    <li>Advanced to Finals at Qualifier</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -305,7 +309,7 @@ export default function Component() {
               Our Projects
             </h2>
             <div className="flex justify-center">
-              <div className="grid gap-12 grid-cols-2 w-fit">
+              <div className="grid gap-12 md:grid-cols-2 w-fit">
                 {projectData.map((project, index) => (
                 <Card key={index} className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
                   <CardHeader className="bg-gradient-to-r from-yellow-500 to-red-500 p-1">

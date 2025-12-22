@@ -48,7 +48,7 @@ export default function Component() {
                     img="/images/coach.jpg"
                     name="Haitao Dai"
                     teamRole="Coach and Team Lead"
-                    text="This year marks Haitao Dai's third year coaching the Ingenuity FTC team. He comes from a background in Electrical Engineering with a passion for control systems and automation. His goal is to guide the team through the full engineering process—from concept to concrete—while ensuring they have the support and resources they need to succeed."
+                    text="Hello! I’m Haitao Dai, and this is my third year coaching the Ingenuity FTC team. I earned my PhD in Electrical Engineering from Boston University and currently work as a Senior Staff Engineer at Northrop Grumman. I’m passionate about circuit design, control systems, and automation, and I enjoy sharing that enthusiasm with our students. My goal is to guide the team through the entire engineering process—from concept and design to testing and refinement—while ensuring they have the support and resources they need to learn, grow, and succeed."
                     pronouns="he/him"
                     href="#"
                     className="flex justify-center items-center"
@@ -61,7 +61,7 @@ export default function Component() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6"> 
                 <Bio
                     img="/images/constance.jpg"
-                    name="Constance Zhang"
+                    name="Constance"
                     teamRole="Software Lead"
                     text="Constance manages the software side of Team Ingenuity, having worked on the TeleOp and Auto code for the robot, as well as some aspects of the robot's vision system. In her free time, she enjoys hanging out with friends and playing tennis."
                     pronouns="she/her"
@@ -70,7 +70,7 @@ export default function Component() {
                 />
                 <Bio
                     img="/images/rainger.webp"
-                    name="Rainger Yu"
+                    name="Rainger"
                     teamRole="Software Team"
                     text="Rainger works on the software side of Team Ingenuity, having worked on the robot's vision system along with maintaing and building out the website as it stands today. In his free time, he likes to code projects, mostly in Python or Javascript, and work on running events with Hack Club."
                     pronouns="he/him"
@@ -85,7 +85,7 @@ export default function Component() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
                     <Bio
                     img="/images/erik.jpg"
-                    name="Erik Wong"
+                    name="Erik"
                     teamRole="Hardware Lead"
                     text="Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currenlty a sophmore at Gilman and enjoys playing squash in his free time."
                     pronouns="he/him"
@@ -94,7 +94,7 @@ export default function Component() {
                 />
                 <Bio
                     img="/images/nathan.jpeg"
-                    name="Nathan Dai"
+                    name="Nathan"
                     teamRole="Hardware Team"
                     text="Nathan is a 3rd year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL even going to nationals once. He enjoys playing soccer and spending times with his friends and family."
                     pronouns="he/him"
@@ -103,7 +103,7 @@ export default function Component() {
                 />
                 <Bio
                     img="/images/sherry1.png"
-                    name="Sherry Wei"
+                    name="Sherry"
                     teamRole="Hardware Team"
                     text="Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts."
                     pronouns="she/her"
@@ -119,7 +119,7 @@ export default function Component() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
                 <Bio
                     img="/images/zilong.jpg"
-                    name="Zilong Ni"
+                    name="Zilong"
                     teamRole="CAD Lead"
                     pronouns="he/him"
                     text="Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to  bring the robot to life."
@@ -135,7 +135,7 @@ export default function Component() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
                 <Bio
                     img="/images/max.jpg"
-                    name="Max Fang"
+                    name="Max"
                     teamRole="General Support Co-Lead"
                     text="Max is a dedicated member of Team Ingenuity, contributing his skills and passion to our projects. With a keen interest in robotics and engineering, he plays a vital role in our team's success."
                     pronouns="he/him"
@@ -144,7 +144,7 @@ export default function Component() {
                 />
                 <Bio
                     img="/images/jonathan.jpeg"
-                    name="Jonathan Wan"
+                    name="Jonathan"
                     teamRole="General Support Co-Lead"
                     text="Jonathan, a new addition to Team Ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. In his downtime, he enjoys associating with friends and family."
                     pronouns="he/him"
@@ -153,7 +153,7 @@ export default function Component() {
                 />
                 <Bio
                     img="/images/vincent.jpg"
-                    name="Vincent Zhang"
+                    name="Vincent"
                     teamRole="General Support Member"
                     text="Vincent is a dedicated member of Team Ingenuity, contributing his skills and passion to our projects. With a keen interest in robotics and engineering, he plays a vital role in our team's success."
                     pronouns="he/him"
