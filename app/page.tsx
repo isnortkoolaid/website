@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Head from 'next/head';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Video } from 'lucide-react';
 import { useState } from "react";
 import dynamic from 'next/dynamic';
 
@@ -183,6 +183,7 @@ export default function Component() {
       <link rel="preload" href="/images/compressed-untitled4.jpg" as="image" type="image/jpeg"/>
       <link rel="preload" href="/images/compressed-untitled2.jpg" as="image" type="image/jpeg"/>
       <link rel="preload" href="/images/compressed-Image_20251004_202757_942.jpg" as="image" type="image/jpeg"/>
+      <link rel="preload" href="/videos/featured1.mp4" as="video" type="video/mp4"/>
       <meta name="preconnect" content="https://fonts.googleapis.com" />
     </Head>
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
@@ -297,6 +298,22 @@ export default function Component() {
             mobileHeight={200}
             speed={10}
           /> */}
+        </section>
+        
+        {/* Featured videos secton */}
+        <section className="py-16 bg-black">
+          <div className="container mx-auto px-4 relative z-10">
+            <h2 className="text-4xl font-bold mb-8 text-center text-white">Featured Video</h2>
+            <div className="flex justify-center">
+              <video 
+                className="w-full max-w-4xl rounded-lg shadow-lg"
+                controls
+              >
+                <source src="/videos/featured1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
         </section>
 
         {/* Projects Section */}
