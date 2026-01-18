@@ -100,7 +100,7 @@ export default function Component() {
           <ul className="list-disc pl-5 mb-4 space-y-2">
             <li>Mentoring FTC Team #31161 <i>HoCo RoBo</i></li>
             <li>Connecting with robotics experts from the US Army and Northrop Gruman</li>
-            <li>Presenting at Howard County Seeds to </li>
+            <li>Presenting at Howard County SEEDS to promote inclusive FTC participation for neurodivergent students and increase the reach of FIRST.</li>
             {/* <li>Increasing knowledge of FTC through teachings</li> */}
           </ul>
           <Marquee>
@@ -364,7 +364,7 @@ export default function Component() {
         {/* Projects Section */}
         <section className="py-32 bg-black relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute inset-y-0 right-1/2 w-1/2 bg-gradient-to-l from-transparent to-cyan-900/30 blur-3xl"></div>
+            <div className="absolute inset-y-0 right-1/2 w-1/2"></div>
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <h2 className="text-4xl font-bold mb-16 text-center text-white">
