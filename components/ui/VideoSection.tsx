@@ -5,6 +5,8 @@ import { ChevronRight } from 'lucide-react';
 
 const videos = [
   { src: '/videos/inspire-3rd-place.mp4', title: 'Inspire Award', alt: 'Ingenuity winning 3rd place Inspire' },
+  { src: '/videos/match1.mp4', title: 'Match 1', alt: 'League match 1 footage' },
+  { src: '/videos/match2.mp4', title: 'Match 2', alt: 'League match 2 footage' },
   { src: '/videos/featured2.mp4', title: 'Autonomous Mode', alt: 'Video of the robot in autonomous mode' },
   { src: '/videos/featured1.mp4', title: 'Robot Driving', alt: 'Video of the robot driving' }
 ];
