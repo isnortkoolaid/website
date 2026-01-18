@@ -239,13 +239,22 @@ export default function Component() {
                   <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">Our Achievements</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <ul className="list-disc pl-5 text-gray-300">
-                    <p className="text-bold">2023-2024 Season</p>
-                    <li>Innovation Award - 2nd Place</li>
-                    <li>Served as Team Captain at the Qualifier</li>
-                    <p className="text-bold">2024-2025 Season</p>
-                    <li>Advanced to Finals at Qualifier</li>
-                  </ul>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-white font-semibold mb-2">2025-2026 Season (DECODE)</h4>
+                      <ul className="list-disc pl-5 text-gray-300 space-y-1">
+                        <li>Inspire Award - 3rd Place (Moorefield, WV Qualifier I)</li>
+                        <li>Advanced to Chesapeake Regional Competition</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold mb-2">2024-2025 Season (INTO THE DEEP)</h4>
+                      <ul className="list-disc pl-5 text-gray-300 space-y-1">
+                        <li>Innovate Award - 2nd Place</li>
+                        <li>Alliance Captain at Qualifier</li>
+                      </ul>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
