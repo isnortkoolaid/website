@@ -47,7 +47,7 @@ export default function TextRotation() {
                     ""
                 }`}
                 key={currentImage}
-                quality={75}
+                quality={70}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 950px"
                 priority

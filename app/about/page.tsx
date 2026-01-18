@@ -1,28 +1,10 @@
-"use client";
-
-// import React, { useEffect, useRef } from 'react';
-import Head from 'next/head';
 import Header from "@/components/ui/header";
 import Bio from "@/components/ui/bio";
 
 export default function Component() {
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
   return (
     <>
-    <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-      <link rel="preload" href="/images/compressed-untitled4.jpg" as="image"/>
-      <link rel="preload" href="/images/compressed-untitled2.jpg" as="image"/>
-      <link rel="preload" href="/images/compressed-Image_20251004_202757_942.jpg" as="image"/>
-    </Head>
+
     <Header/ >
     <div className="flex flex-col min-h-screen bg-black text-white font-sans space-y-8 py-16 pt-32">
         <div className="flex flex-col justify-left items-start space-y-4 px-4">

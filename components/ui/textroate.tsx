@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 
 export default function TextRotation() {
-  const words = ["Ingenuity.", "a team.", "builders.", "innovators.", "leaders.", "coders."]
+  const words = useMemo(() => ["Ingenuity.", "a team.", "builders.", "innovators.", "leaders.", "coders."], [])
 
   const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing")
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -45,9 +45,11 @@ export default function Header() {
             <Image 
                 src="/images/logo.png" 
                 alt="Team Ingenuity Logo"
-                width={300}
-                height={300}
+                width={64}
+                height={64}
                 className="h-16 w-auto object-contain"
+                priority
+                style={{ width: 'auto', height: 64 }}
             />
             <div className="flex space-x-2 sm:space-x-4 md:space-x-6">
                 {navItems.map((item) => (
