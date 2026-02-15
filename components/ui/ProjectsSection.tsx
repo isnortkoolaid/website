@@ -62,7 +62,7 @@ const projectData = [
         </p>
         <ul className="list-disc pl-5 mb-4 space-y-2">
           <li>Mentoring FTC Team #31161 <i>HoCo RoBo</i></li>
-          <li>Connecting with robotics experts from Fartland and Northrop Gruman</li>
+          <li>Connecting with robotics experts from the US Army and Northrop Grumman</li>
           <li>Presenting at Howard County SEEDS to promote inclusive FTC participation for neurodivergent students and increase the reach of FIRST.</li>
         </ul>
         <Marquee>

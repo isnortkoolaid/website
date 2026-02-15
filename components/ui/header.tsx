@@ -25,7 +25,17 @@ export default function Header() {
     };
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        if (href.startsWith('/#')) {
+        if (href === '/') {
+            e.preventDefault();
+            if (pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                router.push('/');
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+            }
+        } else if (href.startsWith('/#')) {
             e.preventDefault();
             const targetId = href.substring(2);
             
@@ -47,7 +57,7 @@ export default function Header() {
 
     return (
     <>
-    <nav className="p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full z-50">
+    <nav className={`p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full ${mobileMenuOpen ? 'z-[60]' : 'z-50'}`}>
             <div className="container mx-auto flex justify-between items-center">
             <Image 
                 src="/images/logo.png" 
@@ -74,13 +84,13 @@ export default function Header() {
             </div>
             {/* Mobile hamburger button */}
             <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-[60]"
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-10"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
             >
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
             </div>
         </nav>
