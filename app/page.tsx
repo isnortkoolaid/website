@@ -86,9 +86,9 @@ export default function Component() {
         </div>
         <div className="container mx-auto text-center px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-8 text-white">
-            Get in Touch
+            Other Inquiries?
           </h2>
-          <p className="mb-8 text-gray-300 max-w-2xl mx-auto">Interested in learning more or supporting our team? We&apos;d love to hear from you!</p>
+          <p className="mb-8 text-gray-300 max-w-2xl mx-auto">Whether you&apos;re interested in sponsoring our team, partnering with us, or have any other questions, we&apos;d love to hear from you!</p>
           <Button size="lg" asChild className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full px-8 py-3 font-medium group button-gradient">
             <a href="mailto:contact@ingenuity.team" rel="noopener noreferrer">
               Contact Us

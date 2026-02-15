@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./button";
@@ -8,6 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 export default function Header() {
     const pathname = usePathname();
     const router = useRouter();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     
     const navItems = [
         { name: 'Home', href: '/' },
@@ -25,22 +27,22 @@ export default function Header() {
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith('/#')) {
             e.preventDefault();
-            const targetId = href.substring(2); // Remove '/#'
+            const targetId = href.substring(2);
             
             if (pathname !== '/') {
-                // Navigate to home first, then scroll
                 router.push('/');
                 setTimeout(() => {
                     scrollToSection(targetId);
                 }, 100);
             } else {
-                // Already on home page, just scroll
                 scrollToSection(targetId);
             }
         }
+        setMobileMenuOpen(false);
     };
 
     return (
+    <>
     <nav className="p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full z-50">
             <div className="container mx-auto flex justify-between items-center">
             <Image 
@@ -52,7 +54,8 @@ export default function Header() {
                 priority
                 style={{ width: 'auto', height: 64 }}
             />
-            <div className="flex space-x-2 sm:space-x-4 md:space-x-6">
+            {/* Desktop nav buttons */}
+            <div className="hidden md:flex space-x-4 md:space-x-6">
                 {navItems.map((item) => (
                 <Link 
                     key={item.name} 
@@ -65,7 +68,41 @@ export default function Header() {
                 </Link>
                 ))}
             </div>
+            {/* Mobile hamburger button */}
+            <button
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-[60]"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+            >
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            </button>
             </div>
         </nav>
+
+    {/* Mobile fullscreen overlay menu */}
+    <div
+        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${
+            mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`
+    >
+        <div className={`flex flex-col items-center space-y-8 transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}> 
+            {navItems.map((item, index) => (
+                <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className="transition-all duration-300 ease-in-out"
+                    style={{ transitionDelay: mobileMenuOpen ? `${index * 75}ms` : '0ms' }}
+                >
+                    <span className="text-3xl font-bold text-white hover:text-orange-400 transition-colors duration-200">
+                        {item.name}
+                    </span>
+                </Link>
+            ))}
+        </div>
+    </div>
+    </>
     );
 }
