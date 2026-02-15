@@ -16,21 +16,20 @@ export default function Component() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
                 <Bio
-                    img="/images/john.png"
-                    name="John Wan"
-                    teamRole="Assistant Coach"
-                    text="John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering."
-                    pronouns="he/him"
-                    href="#"
-                    className="flex justify-center items-center"
-                    // email="max"
-                />
-
-                <Bio
                     img="/images/coach.jpg"
                     name="Haitao Dai"
                     teamRole="Head Coach"
                     text="Coach Dai is in his third year coaching the Ingenuity FTC team. He earned his PhD in Electrical Engineering from Boston University and currently works as a Senior Staff Engineer at Northrop Grumman. He is passionate about circuit design, control systems, and automation, and enjoys sharing that enthusiasm with students. His goal is to guide the team through the entire engineering process—from concept and design to testing and refinement—while ensuring they have the support and resources they need to learn, grow, and succeed."
+                    pronouns="he/him"
+                    href="#"
+                    className="flex justify-center items-center"
+                />
+
+                <Bio
+                    img="/images/john.png"
+                    name="John Wan"
+                    teamRole="Assistant Coach"
+                    text="John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering."
                     pronouns="he/him"
                     href="#"
                     className="flex justify-center items-center"

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./button";
+
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
@@ -51,7 +51,7 @@ export default function Header() {
         setMobileMenuOpen(false);
     };
 
-    const overlayClass = `fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`;
+    const overlayClass = `fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`;
 
     const innerClass = `flex flex-col items-center space-y-8 transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`;
 
@@ -68,23 +68,9 @@ export default function Header() {
                 priority
                 style={{ width: 'auto', height: 64 }}
             />
-            {/* Desktop nav buttons */}
-            <div className="hidden md:flex space-x-4 md:space-x-6">
-                {navItems.map((item) => (
-                <Link 
-                    key={item.name} 
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                >
-                    <Button variant="ghost" className="text-gray-300 bg-gray-700/20 hover:bg-gray-700/20 hover:text-gray-300 lg:hover:text-white lg:hover:bg-gray-700 text-sm">
-                    {item.name}
-                    </Button>
-                </Link>
-                ))}
-            </div>
-            {/* Mobile hamburger button */}
+            {/* Hamburger button */}
             <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-10"
+                className="flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-10"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
             >
@@ -95,7 +81,7 @@ export default function Header() {
             </div>
         </nav>
 
-    {/* Mobile fullscreen overlay menu */}
+    {/* Fullscreen overlay menu */}
     <div className={overlayClass}>
         <div className={innerClass}>
             {navItems.map((item, index) => (
