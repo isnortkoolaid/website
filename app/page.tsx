@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import Header from "@/components/ui/header";
 import HeroSection from "@/components/ui/HeroSection";
 import { LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
+import FilloutEmbed from "@/components/ui/FilloutEmbed";
 
 export default function Component() {
   return (
@@ -18,7 +19,7 @@ export default function Component() {
           <div className="absolute inset-y-0 left-1/2 w-1/2 blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className="text-4xl font-bold mb-16 text-center bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-16 text-center text-white">
             About Our Team
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
@@ -40,6 +41,7 @@ export default function Component() {
                     <h4 className="text-white font-semibold mb-2">2025-2026 Season (DECODE)</h4>
                     <ul className="list-disc pl-5 text-gray-300 space-y-1">
                       <li>Inspire Award - 3rd Place (Moorefield, WV Qualifier I)</li>
+                      <li>Inspire Award - 2nd Place (Union Bridge, MD Qualifier III)</li>
                       <li>Advanced to Chesapeake Regional Competition</li>
                     </ul>
                   </div>
@@ -62,13 +64,28 @@ export default function Component() {
       <LazyVideoSection />
       <LazyProjectsSection />
 
+      {/* Interested Section */}
+      <section id="interested" className="py-32 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-4xl font-bold mb-4 text-center text-white">
+            Join the Team
+          </h2>
+          <p className="text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+            Curious about what we do? Fill out the interest form below and we&apos;ll reach out with more details.
+          </p>
+          <div className="max-w-3xl mx-auto">
+            <FilloutEmbed />
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section - Server rendered */}
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 blur-3xl"></div>
         </div>
         <div className="container mx-auto text-center px-4 relative z-10">
-          <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-yellow-400 to-cyan-400">
+          <h2 className="text-4xl font-bold mb-8 text-white">
             Get in Touch
           </h2>
           <p className="mb-8 text-gray-300 max-w-2xl mx-auto">Interested in learning more or supporting our team? We&apos;d love to hear from you!</p>
