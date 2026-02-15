@@ -41,6 +41,10 @@ export default function Header() {
         setMobileMenuOpen(false);
     };
 
+    const overlayClass = `fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`;
+
+    const innerClass = `flex flex-col items-center space-y-8 transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`;
+
     return (
     <>
     <nav className="p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full z-50">
@@ -82,12 +86,8 @@ export default function Header() {
         </nav>
 
     {/* Mobile fullscreen overlay menu */}
-    <div
-        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${
-            mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`
-    >
-        <div className={`flex flex-col items-center space-y-8 transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`}> 
+    <div className={overlayClass}>
+        <div className={innerClass}>
             {navItems.map((item, index) => (
                 <Link
                     key={item.name}
