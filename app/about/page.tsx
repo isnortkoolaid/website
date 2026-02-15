@@ -1,12 +1,18 @@
 import Header from "@/components/ui/header";
 import Bio from "@/components/ui/bio";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About — Ingenuity",
+  description: "Meet the members of FTC team 24220 Ingenuity.",
+};
 
 export default function Component() {
   return (
     <>
 
     <Header/ >
-    <div className="flex flex-col min-h-screen bg-black text-white font-sans space-y-8 py-16 pt-32">
+    <main id="main" className="flex flex-col min-h-screen bg-black text-white font-sans space-y-8 py-16 pt-32">
         <div className="flex flex-col justify-left items-start space-y-4 px-4">
             <h1 className="text-4xl font-bold">Team Ingenuity aims to inspire the next generation of innovators.</h1>
             <h2 className="text-2xl font-bold">Meet the people who make it all possible:</h2>
@@ -168,7 +174,7 @@ export default function Component() {
             </div>
         </div>
         
-    </div>
+    </main>
     </>
   );
 }

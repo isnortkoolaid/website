@@ -24,7 +24,7 @@ export default function VideoSection() {
             className="p-3 hover:bg-gray-800 rounded-lg transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="Previous video"
           >
-            <ChevronRight className="rotate-180 text-white" size={28} />
+            <ChevronRight aria-hidden="true" focusable="false" className="rotate-180 text-white" size={28} />
           </button>
           <div className="relative w-full max-w-[950px] aspect-video flex justify-center items-center">
             <video 
@@ -43,7 +43,7 @@ export default function VideoSection() {
             className="p-3 hover:bg-gray-800 rounded-lg transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="Next video"
           >
-            <ChevronRight className="text-white" size={28} />
+            <ChevronRight aria-hidden="true" focusable="false" className="text-white" size={28} />
           </button>
         </div>
         <div className="flex justify-center gap-2 mt-4">

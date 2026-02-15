@@ -18,7 +18,7 @@ export default function HeroSection() {
         <Button size="lg" asChild className="bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full px-8 py-3 font-medium group button-gradient">
           <a href="#about">
             Learn More
-            <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight aria-hidden="true" focusable="false" className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </Button>
       </div>

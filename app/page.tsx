@@ -9,12 +9,12 @@ import FilloutEmbed from "@/components/ui/FilloutEmbed";
 export default function Component() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
-      <main>
+      <main id="main">
       <Header />
       <HeroSection />
 
       {/* About Section - Server rendered for SEO */}
-      <section id="about" className="py-32 relative overflow-hidden">
+      <section id="about" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-y-0 left-1/2 w-1/2 blur-3xl"></div>
         </div>
@@ -65,7 +65,7 @@ export default function Component() {
       <LazyProjectsSection />
 
       {/* Interested Section */}
-      <section id="interested" className="py-32 relative overflow-hidden">
+      <section id="interested" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-4 text-center text-white">
             Join the Team
@@ -80,7 +80,7 @@ export default function Component() {
       </section>
 
       {/* Contact Section - Server rendered */}
-      <section id="contact" className="py-32 relative overflow-hidden">
+      <section id="contact" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 blur-3xl"></div>
         </div>
@@ -92,7 +92,7 @@ export default function Component() {
           <Button size="lg" asChild className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full px-8 py-3 font-medium group button-gradient">
             <a href="mailto:contact@ingenuity.team" rel="noopener noreferrer">
               Contact Us
-              <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight aria-hidden="true" focusable="false" className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
         </div>

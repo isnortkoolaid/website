@@ -20,7 +20,7 @@ const projectData = [
           Our 2025-2026 robot represents the culmination of months of design, prototyping, and testing. 
           Built specifically for this year&apos;s DECODE challenge.
         </p>
-        <Marquee>
+        <Marquee pauseOnHover pauseOnClick>
           <div className="px-2 h-56 flex items-center">
             <Image
               src="/images/compressed-untitled2.jpg"
@@ -65,7 +65,7 @@ const projectData = [
           <li>Connecting with robotics experts from the US Army and Northrop Grumman</li>
           <li>Presenting at Howard County SEEDS to promote inclusive FTC participation for neurodivergent students and increase the reach of FIRST.</li>
         </ul>
-        <Marquee>
+        <Marquee pauseOnHover pauseOnClick>
           <div className="px-2 h-56 flex items-center">
             <Image
               src="/images/outreach1.png"
@@ -131,7 +131,7 @@ export default function ProjectsSection() {
                   className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full px-6 py-2 font-medium button-gradient"
                 >
                   Read More<span className="sr-only"> about {project.title}</span>
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight aria-hidden="true" focusable="false" className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
             </Card>

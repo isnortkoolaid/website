@@ -1,12 +1,24 @@
 'use client'
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
 export default function GallerySection() {
+  const [paused, setPaused] = useState(false);
+
   return (
-    <section className="py-8 bg-black">
-      <Marquee>
+    <section className="py-8 bg-black" aria-label="Team photo gallery" role="region">
+      <div className="container mx-auto px-4 flex justify-end mb-2">
+        <button
+          onClick={() => setPaused(!paused)}
+          className="text-gray-400 hover:text-white transition-colors text-sm px-3 py-1.5 rounded border border-gray-700 hover:border-gray-500 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+          aria-label={paused ? "Play gallery slideshow" : "Pause gallery slideshow"}
+        >
+          {paused ? "▶ Play" : "⏸ Pause"}
+        </button>
+      </div>
+      <Marquee play={!paused} pauseOnHover>
         <Image
           src="/images/compressed-untitled4.jpg"
           alt="Team Ingenuity as of 2025"

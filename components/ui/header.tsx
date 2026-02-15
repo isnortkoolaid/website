@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,6 +10,19 @@ export default function Header() {
     const pathname = usePathname();
     const router = useRouter();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const hamburgerRef = useRef<HTMLButtonElement>(null);
+    const firstLinkRef = useRef<HTMLAnchorElement>(null);
+
+    const hasOpenedRef = useRef(false);
+
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            hasOpenedRef.current = true;
+            setTimeout(() => firstLinkRef.current?.focus(), 100);
+        } else if (hasOpenedRef.current) {
+            hamburgerRef.current?.focus();
+        }
+    }, [mobileMenuOpen]);
     
     const navItems = [
         { name: 'Home', href: '/' },
@@ -70,9 +83,12 @@ export default function Header() {
             />
             {/* Hamburger button */}
             <button
-                className="flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-10"
+                ref={hamburgerRef}
+                className="flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded relative z-10"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
+                aria-controls="nav-menu"
             >
                 <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
                 <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'opacity-0' : ''}`} />
@@ -82,15 +98,23 @@ export default function Header() {
         </nav>
 
     {/* Fullscreen overlay menu */}
-    <div className={overlayClass}>
+    <div
+        id="nav-menu"
+        role="dialog"
+        aria-label="Navigation menu"
+        aria-hidden={!mobileMenuOpen}
+        className={overlayClass}
+    >
         <div className={innerClass}>
             {navItems.map((item, index) => (
                 <Link
                     key={item.name}
+                    ref={index === 0 ? firstLinkRef : undefined}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="transition-all duration-300 ease-in-out"
+                    className="transition-all duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:rounded"
                     style={{ transitionDelay: mobileMenuOpen ? `${index * 75}ms` : '0ms' }}
+                    tabIndex={mobileMenuOpen ? 0 : -1}
                 >
                     <span className="text-3xl font-bold text-white hover:text-orange-400 transition-colors duration-200">
                         {item.name}

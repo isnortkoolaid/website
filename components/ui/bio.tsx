@@ -28,8 +28,8 @@ export default function Bio({ img, name, teamRole, text, pronouns, href, classNa
                         <p className="text-orange-400 font-semibold mt-1">{teamRole}</p>
                         <p className="mt-4 text-zinc-300">{text}</p>
                         {href !== "#" && (
-                            <Link href={href} className="text-blue-400 hover:underline mt-2">
-                                Learn More
+                            <Link href={href} className="text-blue-400 hover:underline mt-2 inline-flex items-center px-1 py-0.5">
+                                Learn more<span className="sr-only"> about {name}</span>
                             </Link>
                         )}
                     </div>
