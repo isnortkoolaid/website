@@ -1,3 +1,4 @@
+// 'use client' is required because this component uses useState to manage modal state.
 'use client'
 
 import { useState } from 'react';
@@ -8,8 +9,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from 'lucide-react';
 
+// Dynamically import the Modal component with ssr: false so it only loads on the
+// client when a user actually opens a project. Keeps the initial bundle smaller.
 const Modal = dynamic(() => import("@/components/ui/modal"), { ssr: false });
 
+// Project data array. Each entry has:
+//   - title: displayed on the card heading and passed to the modal
+//   - description: short summary shown on the card body
+//   - content: JSX rendered inside the modal, including text and image marquees
 const projectData = [
   { 
     title: 'Current Robot', 
@@ -20,6 +27,9 @@ const projectData = [
           Our 2025-2026 robot represents the culmination of months of design, prototyping, and testing. 
           Built specifically for this year&apos;s DECODE challenge.
         </p>
+        {/* Marquee auto-scrolls images horizontally.
+            pauseOnHover and pauseOnClick let users stop the motion,
+            satisfying WCAG 2.2.2 (Pause, Stop, Hide). */}
         <Marquee pauseOnHover pauseOnClick>
           <div className="px-2 h-56 flex items-center">
             <Image
@@ -65,6 +75,7 @@ const projectData = [
           <li>Connecting with robotics experts from the US Army and Northrop Grumman</li>
           <li>Presenting at Howard County SEEDS to promote inclusive FTC participation for neurodivergent students and increase the reach of FIRST.</li>
         </ul>
+        {/* Same Marquee pattern -- pauseOnHover/pauseOnClick for WCAG 2.2.2 compliance. */}
         <Marquee pauseOnHover pauseOnClick>
           <div className="px-2 h-56 flex items-center">
             <Image
@@ -100,9 +111,12 @@ const projectData = [
 ];
 
 export default function ProjectsSection() {
+  // modalOpen: whether the detail modal is currently visible
+  // selectedProject: which project's title and content to display in the modal
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<{title: string, content: React.ReactNode} | null>(null);
 
+  // Sets the selected project and opens the modal when a card's button is clicked.
   const handleProjectClick = (project: typeof projectData[0]) => {
     setSelectedProject({ title: project.title, content: project.content });
     setModalOpen(true);
@@ -113,6 +127,8 @@ export default function ProjectsSection() {
       <div className="absolute inset-0">
         <div className="absolute inset-y-0 right-1/2 w-1/2"></div>
       </div>
+
+      {/* Centered grid layout for project cards */}
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold mb-16 text-center text-white">
           Our Projects
@@ -120,6 +136,9 @@ export default function ProjectsSection() {
         <div className="flex justify-center">
           <div className="grid gap-12 md:grid-cols-2 w-fit">
             {projectData.map((project, index) => (
+            // Each Card uses shadcn/ui Card primitives. The CardHeader has an
+            // orange-to-red gradient border effect. CardContent holds the
+            // description and a "Read More" button.
             <Card key={index} className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
               <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 p-1">
                 <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">{project.title}</CardTitle>
@@ -130,7 +149,11 @@ export default function ProjectsSection() {
                   onClick={() => handleProjectClick(project)}
                   className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full px-6 py-2 font-medium button-gradient"
                 >
+                  {/* sr-only span gives screen readers the full link purpose
+                      (e.g. "Read More about Current Robot") per WCAG 2.4.4. */}
                   Read More<span className="sr-only"> about {project.title}</span>
+                  {/* ChevronRight is purely decorative, so aria-hidden hides it
+                      from assistive technology. */}
                   <ChevronRight aria-hidden="true" focusable="false" className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
@@ -139,6 +162,9 @@ export default function ProjectsSection() {
           </div>
         </div>
       </div>
+
+      {/* Modal receives isOpen, onClose, title, and content props.
+          It renders the selected project's detailed content in an overlay. */}
       <Modal 
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)}

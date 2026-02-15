@@ -1,7 +1,11 @@
+// -- Site navigation header --
 import Header from "@/components/ui/header";
+// -- Reusable team member biography card component --
 import Bio from "@/components/ui/bio";
 import type { Metadata } from "next";
 
+// Page-specific metadata overrides the default from layout.tsx.
+// A unique <title> per page satisfies WCAG 2.4.2 (Page Titled).
 export const metadata: Metadata = {
   title: "About — Ingenuity",
   description: "Meet the members of FTC team 24220 Ingenuity.",
@@ -12,11 +16,18 @@ export default function Component() {
     <>
 
     <Header/ >
+    {/* Main landmark -- skip-link target from layout.tsx.
+        pt-32 pushes content below the fixed header. */}
     <main id="main" className="flex flex-col min-h-screen bg-black text-white font-sans space-y-8 py-16 pt-32">
         <div className="flex flex-col justify-left items-start space-y-4 px-4">
             <h1 className="text-4xl font-bold">Team Ingenuity aims to inspire the next generation of innovators.</h1>
             <h2 className="text-2xl font-bold">Meet the people who make it all possible:</h2>
         </div>
+
+        {/* ---- Coaches and Mentors section ----
+            Adult coaches and mentors who guide the team. Each Bio component
+            renders a photo, name, role, pronouns, and biography text.
+            href="#" means this member has no external profile link. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">Coaches and Mentors</h2>
 
@@ -40,6 +51,8 @@ export default function Component() {
                     href="#"
                     className="flex justify-center items-center"
                 />
+                {/* col-span-full centers this solo Bio across both columns
+                    of the 2-column grid so it does not sit off to one side. */}
                 <Bio
                     img="/images/baoshe.jpg"
                     name="Baoshe Zhang"
@@ -52,10 +65,15 @@ export default function Component() {
             </div>
             {/* <nav className="p-4 backdrop-blur-md bg-black/30 fixed w-full z-50"> */}
         </div>
+
+        {/* ---- Team Leadership section ----
+            The team captain. col-span-full centers the single member
+            within the 2-column grid layout. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">Team Leadership</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
+                {/* col-span-full centers this solo Bio in the 2-col grid. */}
                 <Bio
                     img="/images/elaine.jpg"
                     name="Elaine"
@@ -67,6 +85,9 @@ export default function Component() {
                 />
             </div>
         </div>
+
+        {/* ---- Software Team section ----
+            Members responsible for robot TeleOp/Auto code, vision, and website. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">Software Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6"> 
@@ -90,6 +111,10 @@ export default function Component() {
                 />
             </div>
         </div>
+
+        {/* ---- Hardware Team section ----
+            Members who handle mechanical design, electrical wiring,
+            robot construction, and portfolio development. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">Hardware Team</h2>
 
@@ -133,10 +158,15 @@ export default function Component() {
             </div>
             {/* <nav className="p-4 backdrop-blur-md bg-black/30 fixed w-full z-50"> */}
         </div>
+
+        {/* ---- CAD Team section ----
+            Members who create 3D models and custom parts for the robot.
+            col-span-full centers the solo member in the 2-col grid. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">CAD Team</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl mt-6">
+                {/* col-span-full centers this solo Bio in the 2-col grid. */}
                 <Bio
                     img="/images/zilong.jpg"
                     name="Zilong"
@@ -149,6 +179,10 @@ export default function Component() {
             </div>
             {/* <nav className="p-4 backdrop-blur-md bg-black/30 fixed w-full z-50"> */}
         </div>
+
+        {/* ---- Outreach & Strategy section ----
+            Members focused on community engagement, sponsorship coordination,
+            and competition strategy planning. */}
         <div className="flex flex-col items-center w-full space-y-6 px-4">
             <h2 className="text-3xl font-bold mb-4">Outreach & Strategy</h2>
 

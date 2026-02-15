@@ -46,6 +46,16 @@ Subject line: imperative mood, lowercase, under 72 characters.
 - Decorative icons from `lucide-react` must have `aria-hidden="true" focusable="false"`.
 - Avoid inline `style` unless required for dynamic values or third-party embed compatibility.
 
+### Comments
+
+This codebase is heavily commented so developers without AI tooling can understand it. When adding or modifying code:
+
+- Add comments explaining **what** a section does and **why** (not just restating the code).
+- Comment all props/interfaces, state variables, effects, and non-obvious logic.
+- Reference relevant WCAG criteria when adding accessibility patterns (e.g., "WCAG 2.4.7 Focus Visible").
+- Use ASCII characters only in comments (no unicode symbols).
+- Use `//` for single-line comments and `{/* */}` for JSX comments.
+
 ### Component Patterns
 
 - shadcn/ui primitives live in `components/ui/` (button, card, separator). Follow their existing pattern: `forwardRef`, `cn()` utility, CVA variants.
@@ -72,6 +82,11 @@ Before committing, always:
 
 1. Run `npm run build` — must pass with no errors.
 2. Run `npm run lint` — must pass with no errors.
+3. Once all changes are verified, commit and push.
+
+### General Guidance
+
+For anything not explicitly covered in this document, follow established best practices for a Next.js App Router project with TypeScript, Tailwind CSS, and React. Prioritize readability, accessibility, and performance.
 
 ### Maintaining These Docs
 

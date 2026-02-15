@@ -1,19 +1,33 @@
+// -- UI primitives (shadcn/ui Card components) --
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// -- shadcn/ui Button wrapper --
 import { Button } from "@/components/ui/button";
+// -- Decorative chevron icon from lucide-react --
 import { ChevronRight } from 'lucide-react';
+// -- Site-wide navigation header --
 import Header from "@/components/ui/header";
+// -- Full-width hero banner with background image --
 import HeroSection from "@/components/ui/HeroSection";
+// -- Heavy client components loaded lazily via next/dynamic (ssr: false)
+//    to reduce the initial JS bundle and speed up First Contentful Paint.
+//    They are only hydrated when the browser scrolls near them. --
 import { LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
+// -- Third-party embedded form for prospective member sign-ups --
 import FilloutEmbed from "@/components/ui/FilloutEmbed";
 
 export default function Component() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white font-sans">
+      {/* <main id="main"> is the skip-link target defined in layout.tsx.
+          Keyboard users who activate "Skip to content" land here. */}
       <main id="main">
       <Header />
       <HeroSection />
 
-      {/* About Section - Server rendered for SEO */}
+      {/* About section -- server-rendered for SEO. Contains the team's
+          mission statement and a list of competition achievements.
+          scroll-mt-24 adds top margin so the section heading is not hidden
+          behind the fixed header when navigated to via an anchor link. */}
       <section id="about" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-y-0 left-1/2 w-1/2 blur-3xl"></div>
@@ -23,6 +37,7 @@ export default function Component() {
             About Our Team
           </h2>
           <div className="grid gap-12 md:grid-cols-2">
+            {/* Mission card */}
             <Card className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
               <CardHeader className="bg-gradient-to-r from-red-600 to-orange-600 p-1">
                 <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">Our Mission</CardTitle>
@@ -31,6 +46,7 @@ export default function Component() {
                 <p className="text-gray-300">We&apos;re dedicated to inspiring the next generation of STEM students in Howard County through our participation in Competitive Robotics.</p>
               </CardContent>
             </Card>
+            {/* Achievements card -- season-by-season awards and milestones */}
             <Card className="bg-gray-900/50 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-800 overflow-hidden backdrop-blur-sm">
               <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 p-1">
                 <CardTitle className="text-xl font-semibold text-white bg-gray-900/80 p-4 rounded-t-lg">Our Achievements</CardTitle>
@@ -59,12 +75,17 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Lazy-loaded sections */}
+      {/* Lazy-loaded sections -- these are heavy client components
+          (image gallery, video player, project cards) wrapped with
+          next/dynamic and ssr: false. They are code-split into separate
+          chunks so the initial page load stays fast. */}
       <LazyGallerySection />
       <LazyVideoSection />
       <LazyProjectsSection />
 
-      {/* Interested Section */}
+      {/* Interested section -- contains an embedded Fillout form where
+          prospective members can express interest in joining the team.
+          scroll-mt-24 offsets for the fixed header on anchor navigation. */}
       <section id="interested" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-4 text-center text-white">
@@ -79,7 +100,9 @@ export default function Component() {
         </div>
       </section>
 
-      {/* Contact Section - Server rendered */}
+      {/* Contact section -- server-rendered CTA for sponsorship, partnership,
+          and general inquiries. Links to the team email.
+          scroll-mt-24 offsets for the fixed header on anchor navigation. */}
       <section id="contact" className="scroll-mt-24 py-32 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 blur-3xl"></div>
@@ -92,6 +115,8 @@ export default function Component() {
           <Button size="lg" asChild className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-full px-8 py-3 font-medium group button-gradient">
             <a href="mailto:contact@ingenuity.team" rel="noopener noreferrer">
               Contact Us
+              {/* ChevronRight is purely decorative, so aria-hidden="true"
+                  and focusable="false" hide it from screen readers. */}
               <ChevronRight aria-hidden="true" focusable="false" className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
@@ -100,7 +125,7 @@ export default function Component() {
 
       </main>
 
-      {/* Footer */}
+      {/* Site footer -- copyright notice and attribution */}
       <footer className="bg-gray-900/50 text-gray-400 py-6 border-t border-gray-800 backdrop-blur-md">
         <div className="container mx-auto text-center">
           <p>Made with &lt;3 by Team Ingenuity <br /> &copy; {new Date().getFullYear()}, all rights reserved</p>

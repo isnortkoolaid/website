@@ -18,6 +18,16 @@ Next.js 16 (App Router) website for FTC Team 24220 Ingenuity. React 19, TypeScri
 Use Conventional Commits: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `perf:`, `a11y:`, `chore:`.
 Imperative mood, lowercase, under 72 characters.
 
+## Comments
+
+This codebase is heavily commented for developers without AI tooling. When adding or modifying code:
+
+- Explain **what** and **why**, not just restating the code.
+- Comment all props/interfaces, state variables, effects, and non-obvious logic.
+- Reference WCAG criteria when adding accessibility patterns (e.g., "WCAG 2.4.7 Focus Visible").
+- ASCII characters only in comments (no unicode).
+- Use `//` for single-line, `{/* */}` for JSX.
+
 ## Accessibility (WCAG 2.2 AA)
 
 - All pages need `<main id="main">` landmark.
@@ -33,6 +43,11 @@ Imperative mood, lowercase, under 72 characters.
 
 - Run `npm run lint` before committing.
 - Run `npm run build` to verify no build errors.
+- Once all changes are verified, commit and push.
+
+## General Guidance
+
+For anything not explicitly covered here, follow established best practices for a Next.js App Router project with TypeScript, Tailwind CSS, and React. Prioritize readability, accessibility, and performance.
 
 ## Key Files
 

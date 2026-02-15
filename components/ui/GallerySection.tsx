@@ -1,3 +1,8 @@
+/**
+ * GallerySection -- client component.
+ * 'use client' is required because the component uses useState to
+ * manage the pause/play toggle for the marquee animation.
+ */
 'use client'
 
 import { useState } from 'react';
@@ -5,11 +10,19 @@ import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
 export default function GallerySection() {
+  // Controls whether the marquee is currently animating.
+  // When true the marquee stops scrolling; when false it plays.
   const [paused, setPaused] = useState(false);
 
   return (
+    // Labeled region so screen readers can identify this as the
+    // photo gallery landmark (WCAG landmark requirement).
     <section className="py-8 bg-black" aria-label="Team photo gallery" role="region">
       <div className="container mx-auto px-4 flex justify-end mb-2">
+        {/* Pause / Play button -- gives users control over the
+            auto-moving marquee content, satisfying WCAG 2.2.2
+            (Pause, Stop, Hide). The aria-label updates to reflect
+            the current action the button will perform. */}
         <button
           onClick={() => setPaused(!paused)}
           className="text-gray-400 hover:text-white transition-colors text-sm px-3 py-1.5 rounded border border-gray-700 hover:border-gray-500 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
@@ -18,7 +31,12 @@ export default function GallerySection() {
           {paused ? "▶ Play" : "⏸ Pause"}
         </button>
       </div>
+      {/* react-fast-marquee -- the `play` prop is driven by the
+          paused state so the user can stop/start the animation. */}
       <Marquee play={!paused}>
+        {/* Each Image is lazy-loaded for performance. The inline style
+            sets explicit width/height to prevent Cumulative Layout Shift
+            (CLS) while the image loads. Dimensions are fixed at 400x225. */}
         <Image
           src="/images/compressed-untitled4.jpg"
           alt="Team Ingenuity as of 2025"
