@@ -51,13 +51,13 @@ export default function Header() {
         setMobileMenuOpen(false);
     };
 
-    const overlayClass = `fixed inset-0 ${mobileMenuOpen ? 'z-[55]' : 'z-40'} bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`;
+    const overlayClass = `fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`;
 
     const innerClass = `flex flex-col items-center space-y-8 transition-all duration-500 ease-in-out ${mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-8 opacity-0'}`;
 
     return (
     <>
-    <nav className="p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full z-50">
+    <nav className={`p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full ${mobileMenuOpen ? 'z-[60]' : 'z-50'}`}>
             <div className="container mx-auto flex justify-between items-center">
             <Image 
                 src="/images/logo.png" 
@@ -84,7 +84,7 @@ export default function Header() {
             </div>
             {/* Mobile hamburger button */}
             <button
-                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-[60]"
+                className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none relative z-10"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
             >
