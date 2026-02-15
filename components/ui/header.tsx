@@ -88,9 +88,9 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
             >
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ willChange: 'transform' }} />
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'opacity-0' : ''}`} style={{ willChange: 'transform' }} />
-                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ willChange: 'transform' }} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ease-in-out will-change-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
             </div>
         </nav>
