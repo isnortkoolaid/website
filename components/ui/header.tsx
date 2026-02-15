@@ -28,6 +28,21 @@ export default function Header() {
     // initial page load (before the user has ever interacted with the menu).
     const hasOpenedRef = useRef(false);
 
+    // ---------- Close menu after navigation completes ----------
+    // When navigating to a different page, the menu stays open until
+    // the route change is detected. We track the pathname at the time
+    // navigation started; once the actual pathname differs, we know the
+    // new page has been pushed and can close the menu.
+    const [navigatingFrom, setNavigatingFrom] = useState<string | null>(null);
+
+    // Derived during render: if a navigation was pending and the pathname
+    // has changed, reset the pending state and close the menu in one
+    // synchronous pass (no effect needed).
+    if (navigatingFrom !== null && pathname !== navigatingFrom) {
+        setNavigatingFrom(null);
+        setMobileMenuOpen(false);
+    }
+
     // ---------- Focus management (WCAG 2.4.3) ----------
     // When the menu opens: mark it as "has been opened" and, after a short
     // delay (to let the slide-up animation start), move focus to the first
@@ -41,6 +56,19 @@ export default function Header() {
         } else if (hasOpenedRef.current) {
             hamburgerRef.current?.focus();
         }
+    }, [mobileMenuOpen]);
+
+    // ---------- Lock body scroll when menu is open ----------
+    // Prevents the page from scrolling behind the fullscreen overlay.
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
     }, [mobileMenuOpen]);
     
     // Site navigation links. Items with hash hrefs (e.g. "/#interested")
@@ -68,11 +96,19 @@ export default function Header() {
     //     after a delay.
     // In all cases the mobile menu is closed after the action.
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        // Determine whether this click will trigger a page navigation
+        // (i.e. the target route differs from the current pathname).
+        // If so, mark the navigation as pending so the menu stays open
+        // until the new page is pushed.
+        const targetPath = href.startsWith('/#') ? '/' : href;
+        const isPageNavigation = targetPath !== pathname;
+
         if (href === '/') {
             e.preventDefault();
             if (pathname === '/') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
+                setNavigatingFrom(pathname);
                 router.push('/');
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -83,6 +119,7 @@ export default function Header() {
             const targetId = href.substring(2);
             
             if (pathname !== '/') {
+                setNavigatingFrom(pathname);
                 router.push('/');
                 setTimeout(() => {
                     scrollToSection(targetId);
@@ -90,8 +127,20 @@ export default function Header() {
             } else {
                 scrollToSection(targetId);
             }
+        } else if (isPageNavigation) {
+            // Standard link to a different page -- let Next.js handle the
+            // navigation via the <Link> default behaviour, but keep the
+            // menu open until the pathname changes.
+            setNavigatingFrom(pathname);
+            return;
         }
-        setMobileMenuOpen(false);
+
+        // Close immediately only when staying on the same page (e.g.
+        // scrolling to a section). Cross-page navigations close via
+        // the pathname-change effect above.
+        if (!isPageNavigation) {
+            setMobileMenuOpen(false);
+        }
     };
 
     // Fullscreen overlay classes. Fades in/out via opacity transition.
