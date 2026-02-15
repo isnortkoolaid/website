@@ -18,7 +18,7 @@ export default function GallerySection() {
           {paused ? "▶ Play" : "⏸ Pause"}
         </button>
       </div>
-      <Marquee play={!paused} pauseOnHover>
+      <Marquee play={!paused}>
         <Image
           src="/images/compressed-untitled4.jpg"
           alt="Team Ingenuity as of 2025"
