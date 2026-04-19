@@ -9,6 +9,17 @@ import dynamic from 'next/dynamic';
 // The loading prop provides a placeholder div whose height matches the final
 // rendered component, preventing layout shift while the chunk loads.
 
+// 3D background canvas requires browser WebGL APIs (window, WebGLRenderingContext).
+// ssr: false ensures it is never evaluated server-side, where those APIs are absent.
+const Background = dynamic(() => import("../3d/background"), {
+  ssr: false,
+  loading: () => null,
+})
+
+export function LazyBackground() {
+  return <Background />;
+}
+
 const GallerySection = dynamic(() => import("./GallerySection"), { 
   ssr: false,
   loading: () => <div className="py-8 bg-black h-[257px]" />

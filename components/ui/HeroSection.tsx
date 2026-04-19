@@ -9,7 +9,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from 'lucide-react';
 import TextRotation from './textroate';
-import ImageRotation from './ImageRotation';
+// import ImageRotation from './ImageRotation';
 
 export default function HeroSection() {
   return (
@@ -44,10 +44,22 @@ export default function HeroSection() {
           </a>
         </Button>
       </div>
-      {/* ImageRotation -- auto-cycling hero images displayed on the
-          right side of the header on desktop, below the text on mobile. */}
+      {/* <ImageRotation /> -- auto-cycling hero images (commented out,
+          replaced by pre-rendered robot turntable video below). */}
       <div className="flex-1 flex justify-end mt-8 md:mt-0 md:ml-4 w-full md:w-auto">
-        <ImageRotation />
+        {/* Decorative turntable video -- not interactive content, so
+            tabIndex={-1} removes it from the tab order and aria-hidden
+            hides it from screen readers. WCAG 1.1.1. */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          tabIndex={-1}
+          aria-hidden="true"
+          className="h-[700px] w-auto object-contain outline-none pointer-events-none select-none scale-[2]"
+          src="/assets/robot-turntable.webm"
+        />
       </div>
     </header>
   );

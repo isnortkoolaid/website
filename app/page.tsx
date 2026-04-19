@@ -6,12 +6,9 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from 'lucide-react';
 // -- Site-wide navigation header --
 import Header from "@/components/ui/header";
-// -- Full-width hero banner with background image --
-import HeroSection from "@/components/ui/HeroSection";
-// -- Heavy client components loaded lazily via next/dynamic (ssr: false)
-//    to reduce the initial JS bundle and speed up First Contentful Paint.
-//    They are only hydrated when the browser scrolls near them. --
-import { LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
+// -- Lazy-loaded client components (ssr:false). Background needs WebGL,
+//    Gallery/Video/Projects are heavy and code-split for fast initial load. --
+import { LazyBackground, LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
 // -- Third-party embedded form for prospective member sign-ups --
 import FilloutEmbed from "@/components/ui/FilloutEmbed";
 
@@ -22,7 +19,53 @@ export default function Component() {
           Keyboard users who activate "Skip to content" land here. */}
       <main id="main">
       <Header />
-      <HeroSection />
+
+      {/* Hero section -- full-viewport intro with 3D canvas background.
+          The canvas fills the section via an absolute inset-0 layer (z-0)
+          while text sits above it (z-20). overflow-hidden clips the canvas. */}
+      <section
+        id="hero"
+        aria-label="Hero"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* 3D canvas -- absolutely fills the hero section */}
+        <div className="absolute inset-0 z-0">
+          <LazyBackground />
+        </div>
+
+        {/* Dark gradient under the header for clear visual separation */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black via-black/75 to-transparent z-10" />
+        {/* Subtle full-section dark tint for text legibility */}
+        <div className="pointer-events-none absolute inset-0 bg-black/50 z-10" />
+
+        {/* Hero text -- z-20 sits above both overlay layers */}
+        <div className="relative z-20 text-center px-4 max-w-5xl">
+          <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold mb-8 leading-[0.9]">
+            We are{' '}
+            <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+              Ingenuity
+            </span>
+          </h1>
+          <p className="text-2xl md:text-3xl mb-10 leading-relaxed text-gray-300 max-w-3xl mx-auto">
+            Building the Future of STEM in Howard County
+          </p>
+          {/* Learn More scrolls to #about. asChild lets <a> receive Button styles. */}
+          <Button
+            size="lg"
+            asChild
+            className="bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full px-10 py-4 text-lg font-medium group button-gradient focus-visible:ring-2 focus-visible:ring-orange-400"
+          >
+            <a href="#about">
+              Learn More
+              <ChevronRight
+                aria-hidden="true"
+                focusable="false"
+                className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
+              />
+            </a>
+          </Button>
+        </div>
+      </section>
 
       {/* About section -- server-rendered for SEO. Contains the team's
           mission statement and a list of competition achievements.
