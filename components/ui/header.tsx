@@ -5,6 +5,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 
 import { usePathname, useRouter } from "next/navigation";
 
@@ -76,7 +77,7 @@ export default function Header() {
     const navItems = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
-        // { name: 'Projects', href: '/projects' },
+        { name: 'Summer Camp', href: '/summer' },
         { name: 'Join', href: '/#interested' },
         { name: 'Contact', href: '/#contact' },
     ];
@@ -154,13 +155,27 @@ export default function Header() {
 
     return (
     <>
+    {/* Announcement banner -- thin strip pinned to the very top of
+        the viewport on all pages. Promotes the summer camp. */}
+    <div className={`fixed top-0 w-full ${mobileMenuOpen ? 'z-[60]' : 'z-50'} bg-gradient-to-r from-red-600 to-orange-600 text-white text-center text-xs sm:text-sm py-1.5 px-4`}>
+        <Link
+            href="/summer"
+            className="inline-flex items-center gap-1 font-medium hover:underline focus-visible:ring-2 focus-visible:ring-white focus-visible:rounded"
+        >
+            FLL Summer Robotics Camp &mdash; Aug 3-7, Ages 8-14
+            <ChevronRight aria-hidden="true" focusable="false" className="h-3 w-3" />
+            <span className="sr-only">(learn more about the summer camp)</span>
+        </Link>
+    </div>
+
     {/*
-      Navigation bar -- fixed to the top of the viewport with a gradient
+      Navigation bar -- fixed below the announcement banner with a gradient
       background that fades from orange to black. When the menu is open
       the z-index is raised to z-[60] so the bar sits above the overlay
       (z-40), keeping the hamburger button accessible.
+      top-[30px] offsets the nav below the announcement banner.
     */}
-    <nav className={`p-4 backdrop-blur-md bg-gradient-to-b from-orange-500/40 from-0% via-orange-500/20 via-20% to-black to-100% fixed w-full ${mobileMenuOpen ? 'z-[60]' : 'z-50'}`}>
+    <nav className={`p-4 fixed w-full top-[30px] ${mobileMenuOpen ? 'z-[60]' : 'z-50'}`}>
             <div className="container mx-auto flex justify-between items-center">
             <Image 
                 src="/images/logo.png" 
