@@ -4,11 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 // -- Decorative chevron icon from lucide-react --
 import { ChevronRight } from 'lucide-react';
+// -- Optimized image component for the hero robot render --
+import Image from "next/image";
 // -- Site-wide navigation header --
 import Header from "@/components/ui/header";
-// -- Lazy-loaded client components (ssr:false). Background needs WebGL,
-//    Gallery/Video/Projects are heavy and code-split for fast initial load. --
-import { LazyBackground, LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
+// -- Lazy-loaded client components (ssr:false). Gallery/Video/Projects
+//    are heavy and code-split for fast initial load. --
+import { LazyGallerySection, LazyVideoSection, LazyProjectsSection } from "@/components/ui/LazySection";
 // -- Third-party embedded form for prospective member sign-ups --
 import FilloutEmbed from "@/components/ui/FilloutEmbed";
 
@@ -20,17 +22,28 @@ export default function Component() {
       <main id="main">
       <Header />
 
-      {/* Hero section -- full-viewport intro with 3D canvas background.
-          The canvas fills the section via an absolute inset-0 layer (z-0)
-          while text sits above it (z-20). overflow-hidden clips the canvas. */}
+      {/* Hero section -- full-viewport intro with a static robot render
+          as the background. The image fills the section via an absolute
+          inset-0 layer (z-0) while text sits above it (z-20).
+          overflow-hidden clips the image. */}
       <section
         id="hero"
         aria-label="Hero"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* 3D canvas -- absolutely fills the hero section */}
+        {/* Robot render -- absolutely fills the hero section.
+            priority=true preloads the LCP image. object-contain keeps
+            the robot un-cropped at all viewport sizes.
+            Decorative -- alt="" hides it from screen readers (WCAG 1.1.1). */}
         <div className="absolute inset-0 z-0">
-          <LazyBackground />
+          <Image
+            src="/assets/robot.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-contain"
+          />
         </div>
 
         {/* Dark gradient under the header for clear visual separation */}
