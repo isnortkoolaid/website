@@ -77,7 +77,7 @@ export default function Header() {
     const navItems = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
-        { name: 'Summer Camp', href: '/summer' },
+        { name: 'Summer Camp', href: '/camp' },
         { name: 'Join', href: '/#interested' },
         { name: 'Contact', href: '/#contact' },
     ];
@@ -159,7 +159,7 @@ export default function Header() {
         the viewport on all pages. Promotes the summer camp. */}
     <div className={`fixed top-0 w-full ${mobileMenuOpen ? 'z-[60]' : 'z-50'} bg-gradient-to-r from-red-600 to-orange-600 text-white text-center text-xs sm:text-sm py-1.5 px-4`}>
         <Link
-            href="/summer"
+            href="/camp"
             className="inline-flex items-center gap-1 font-medium hover:underline focus-visible:ring-2 focus-visible:ring-white focus-visible:rounded"
         >
             FLL Summer Robotics Camp &mdash; Aug 3-7, Ages 8-14
